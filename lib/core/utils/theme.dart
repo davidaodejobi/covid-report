@@ -57,9 +57,9 @@ class AppTheme with ChangeNotifier {
           fontWeight: FontWeight.normal,
         ),
         headline3: TextStyle(
-          fontSize: 27.0,
-          color: AppColor.secondary,
-          fontWeight: FontWeight.w500,
+          fontSize: 38.0,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
         ),
         headline4: TextStyle(
           fontSize: 22.0,
@@ -67,9 +67,9 @@ class AppTheme with ChangeNotifier {
           fontWeight: FontWeight.normal,
         ),
         headline5: TextStyle(
-          fontSize: 18.0,
-          color: AppColor.secondary,
-          fontWeight: FontWeight.w500,
+          fontSize: 16.0,
+          color: Colors.white,
+          fontWeight: FontWeight.w100,
         ),
         headline6: TextStyle(
           fontSize: 12.0,
@@ -78,7 +78,7 @@ class AppTheme with ChangeNotifier {
         ),
         bodyText1: TextStyle(
           fontSize: 14.0,
-          color: AppColor.secondary,
+          color: Colors.white,
           fontWeight: FontWeight.w400,
         ),
         bodyText2: TextStyle(

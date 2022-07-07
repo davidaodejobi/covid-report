@@ -1,17 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
-  final Widget? mobile;
-  final Widget? tablet;
-  final Widget? desktop;
+  final Widget? tablet, mobile;
+  final Widget desktop;
 
   const ResponsiveBuilder({
     Key? key,
-    @required this.mobile,
-    @required this.tablet,
-    @required this.desktop,
+    required this.desktop,
+    this.mobile,
+    this.tablet,
   }) : super(key: key);
 
   // This gives us some control over the size of the widget
@@ -31,16 +28,14 @@ class ResponsiveBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= 1100) {
-          log('desktop: ${constraints.maxWidth}');
-          return desktop ?? tablet ?? mobile!;
-        } else if (constraints.maxWidth >= 650 && constraints.maxWidth < 1100) {
-          log('tablet: ${constraints.maxWidth}');
-          return tablet ?? mobile!;
-        } else {
-          log('mobile: ${constraints.maxWidth}');
-          return mobile!;
+        if (constraints.maxWidth <= 650) {
+          return mobile ?? tablet ?? desktop;
+        } else if (constraints.maxWidth > 650 && constraints.maxWidth < 1100) {
+          return tablet ?? desktop;
+        } else if (constraints.maxWidth >= 1100) {
+          return desktop;
         }
+        return desktop;
       },
     );
   }
