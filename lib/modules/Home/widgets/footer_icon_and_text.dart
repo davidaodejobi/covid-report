@@ -16,13 +16,13 @@ class FooterIconAndText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         WebsafeSvg.asset(
           'assets/svg/$icon.svg',
-          height: 80,
-          width: 89,
+          height: 70,
+          width: 70,
         ),
         const SizedBox(
           height: 20,

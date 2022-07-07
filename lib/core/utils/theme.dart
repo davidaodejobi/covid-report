@@ -45,14 +45,20 @@ class AppTheme with ChangeNotifier {
       cardTheme: const CardTheme(
         color: Colors.white,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          primary: AppColor.primary, // background (button) color
+          onPrimary: Colors.white, // foreground (text) color
+        ),
+      ),
       textTheme: const TextTheme(
         headline1: TextStyle(
-          fontSize: 72.0,
+          fontSize: 70.0,
           color: AppColor.secondary,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
         ),
         headline2: TextStyle(
-          fontSize: 36.0,
+          fontSize: 50.0,
           color: AppColor.secondary,
           fontWeight: FontWeight.normal,
         ),
@@ -77,8 +83,8 @@ class AppTheme with ChangeNotifier {
           fontWeight: FontWeight.bold,
         ),
         bodyText1: TextStyle(
-          fontSize: 14.0,
-          color: Colors.white,
+          fontSize: 15.0,
+          color: AppColor.tertiary,
           fontWeight: FontWeight.w400,
         ),
         bodyText2: TextStyle(
