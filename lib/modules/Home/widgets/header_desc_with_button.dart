@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../constant/appcolor.dart';
+import '../../../locator.dart';
+import '../providers/home_provider.dart';
 
 class HeaderDescriptionWithButton extends StatelessWidget {
-  const HeaderDescriptionWithButton({
+  HeaderDescriptionWithButton({
     Key? key,
   }) : super(key: key);
+
+  HomeProvider homeProvider = getIt<HomeProvider>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,9 @@ class HeaderDescriptionWithButton extends StatelessWidget {
           height: 50,
           width: 200,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              homeProvider.getAllCountriesCovidReport();
+            },
             child: const Text('Check Symptoms'),
           ),
         ),

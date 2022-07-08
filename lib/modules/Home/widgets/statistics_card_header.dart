@@ -1,33 +1,19 @@
+import 'package:covid_report/locator.dart';
+import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../constant/appcolor.dart';
 
-class StatisticCardHeader extends StatefulWidget {
+class StatisticCardHeader extends StatelessWidget {
   const StatisticCardHeader({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<StatisticCardHeader> createState() => _StatisticCardHeaderState();
-}
-
-class _StatisticCardHeaderState extends State<StatisticCardHeader> {
-  String _selectedCountry = 'Nigeria';
-
-  //list of country names
-  final List _countries = [
-    'Algeria',
-    'Angola',
-    'Benin',
-    'Botswana',
-    'Burkina Faso',
-    'Nigeria',
-    'Burundi',
-  ];
-
-  @override
   Widget build(BuildContext context) {
+    final hp = Provider.of<HomeProvider>(context, listen: true);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,15 +81,13 @@ class _StatisticCardHeaderState extends State<StatisticCardHeader> {
               height: 45,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
-                  items: _countries
-                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  items: hp.listOfCountries
+                      .map((country) => DropdownMenuItem(value: country, child: Text(country!)))
                       .toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedCountry = value as String;
-                    });
+                  onChanged: (String? value) {
+                    hp.onCountrySelect(value!);
                   },
-                  value: _selectedCountry,
+                  value: hp.selectedCountry,
                   style: Theme.of(context).textTheme.headline4!.copyWith(
                         color: AppColor.secondary,
                       ),

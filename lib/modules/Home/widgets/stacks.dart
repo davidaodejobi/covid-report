@@ -15,15 +15,15 @@ class Stacks extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          child: Column(children: const [
-            SizedBox(
+          child: Column(children: [
+            const SizedBox(
               height: 150,
             ),
             HeaderDescriptionWithButton(),
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
-            Statistics(),
+            const Statistics(),
           ]),
         ),
         Positioned(
