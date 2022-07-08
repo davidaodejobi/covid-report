@@ -29,11 +29,17 @@ class FooterIconAndText extends StatelessWidget {
         ),
         Text(
           topText,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: Colors.white),
         ),
         Text(
           bottomText,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1!
+              .copyWith(color: Colors.white),
         ),
       ],
     );
