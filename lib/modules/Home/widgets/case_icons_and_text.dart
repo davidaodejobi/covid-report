@@ -6,12 +6,16 @@ class CasesIconAndText extends StatelessWidget {
     required this.subText,
     required this.caseNo,
     required this.icon,
+    this.iconHeight = 37,
+    this.iconWidth = 37,
     Key? key,
   }) : super(key: key);
 
   final String icon;
   final int caseNo;
   final String subText;
+  final double iconHeight;
+  final double iconWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,8 @@ class CasesIconAndText extends StatelessWidget {
           ),
           WebsafeSvg.asset(
             'assets/svg/$icon.svg',
-            height: 37,
-            width: 37,
+            height: iconHeight,
+            width: iconWidth,
           ),
         ],
       ),

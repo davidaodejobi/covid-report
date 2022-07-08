@@ -20,8 +20,8 @@ class Statistics extends StatelessWidget {
             Row(children: [
               WebsafeSvg.asset(
                 'assets/svg/earth.svg',
-                height: 35,
-                width: 35,
+                height: 40,
+                width: 40,
               ),
               const SizedBox(
                 width: 20,
@@ -44,9 +44,11 @@ class Statistics extends StatelessWidget {
                   caseNo: 100,
                   icon: 'bacteria',
                   subText: 'Confirmed Cases\nWorldwide',
+                  iconHeight: 43,
+                  iconWidth: 43,
                 ),
                 SizedBox(
-                  width: 120,
+                  width: 150,
                 ),
                 CasesIconAndText(
                   caseNo: 189,

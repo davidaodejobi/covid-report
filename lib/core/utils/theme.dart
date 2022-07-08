@@ -49,11 +49,13 @@ class AppTheme with ChangeNotifier {
         style: ElevatedButton.styleFrom(
           primary: AppColor.primary, // background (button) color
           onPrimary: Colors.white, // foreground (text) color
+          elevation: 5, // shadow elevation
+          shadowColor: AppColor.primary.withOpacity(0.5), // shadow color
         ),
       ),
       textTheme: const TextTheme(
         headline1: TextStyle(
-          fontSize: 70.0,
+          fontSize: 80.0,
           color: AppColor.secondary,
           fontWeight: FontWeight.normal,
         ),
