@@ -1,4 +1,6 @@
+import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constant/appcolor.dart';
 
@@ -9,6 +11,7 @@ class StatisticsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hp = Provider.of<HomeProvider>(context);
     return Container(
       height: 470,
       width: double.infinity,
@@ -31,12 +34,15 @@ class StatisticsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Country',
-            style: Theme.of(context).textTheme.headline1!.copyWith(
-                  color: AppColor.primary,
-                  fontSize: 60,
-                ),
+          Flexible(
+            child: Text(
+              hp.selectedCountry,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.headline1!.copyWith(
+                    color: AppColor.primary,
+                    fontSize: 60,
+                  ),
+            ),
           ),
           const SizedBox(
             height: 8,
@@ -51,15 +57,18 @@ class StatisticsCard extends StatelessWidget {
             height: 60,
           ),
           Row(
-            children: const [
+            children: [
               CardCasesCount(
-                noOfOccurrences: 250000,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                noOfOccurrences:
+                    hp.addComma(hp.selectedCountryData.totalConfirmed!),
                 type: 'Confirmed Cases',
               ),
-              Spacer(),
+              const Spacer(),
               CardCasesCount(
-                noOfOccurrences: 345000,
-                type: 'Incident Rate',
+                crossAxisAlignment: CrossAxisAlignment.end,
+                noOfOccurrences: hp.addComma(hp.selectedCountryData.newDeaths!),
+                type: 'New Confirmed Cases',
               ),
             ],
           ),
@@ -67,15 +76,18 @@ class StatisticsCard extends StatelessWidget {
             height: 40,
           ),
           Row(
-            children: const [
+            children: [
               CardCasesCount(
-                noOfOccurrences: 35898,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                noOfOccurrences:
+                    hp.addComma(hp.selectedCountryData.totalDeaths!),
                 type: 'Deaths',
               ),
-              Spacer(),
+              const Spacer(),
               CardCasesCount(
-                noOfOccurrences: 2.7,
-                type: 'Case Fatality Ratio',
+                crossAxisAlignment: CrossAxisAlignment.end,
+                noOfOccurrences: hp.addComma(hp.selectedCountryData.newDeaths!),
+                type: 'New Deaths',
               ),
             ],
           ),
@@ -89,19 +101,21 @@ class CardCasesCount extends StatelessWidget {
   const CardCasesCount({
     required this.noOfOccurrences,
     required this.type,
+    required this.crossAxisAlignment,
     Key? key,
   }) : super(key: key);
 
-  final double noOfOccurrences;
+  final String noOfOccurrences;
   final String type;
+  final CrossAxisAlignment crossAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment,
       children: [
         Text(
-          '$noOfOccurrences',
+          noOfOccurrences,
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 color: AppColor.tertiaryDark,
                 fontSize: 50,

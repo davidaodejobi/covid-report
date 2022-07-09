@@ -1,8 +1,12 @@
+import 'package:covid_report/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../constant/appcolor.dart';
+import '../providers/home_provider.dart';
 import 'case_icons_and_text.dart';
+
+HomeProvider hp = getIt.get<HomeProvider>();
 
 class Statistics extends StatelessWidget {
   const Statistics({
@@ -39,19 +43,19 @@ class Statistics extends StatelessWidget {
               height: 10,
             ),
             Row(
-              children: const [
+              children: [
                 CasesIconAndText(
-                  caseNo: 100,
+                  caseNo: hp.withSuffix(hp.globalData.totalConfirmed!),
                   icon: 'bacteria',
                   subText: 'Confirmed Cases\nWorldwide',
                   iconHeight: 43,
                   iconWidth: 43,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 150,
                 ),
                 CasesIconAndText(
-                  caseNo: 189,
+                  caseNo: hp.withSuffix(hp.globalData.totalDeaths!),
                   icon: 'union',
                   subText: 'Death\nWorldwide',
                 ),

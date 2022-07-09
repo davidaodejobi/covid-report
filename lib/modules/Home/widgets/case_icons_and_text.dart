@@ -12,7 +12,7 @@ class CasesIconAndText extends StatelessWidget {
   }) : super(key: key);
 
   final String icon;
-  final int caseNo;
+  final String caseNo;
   final String subText;
   final double iconHeight;
   final double iconWidth;
@@ -39,7 +39,7 @@ class CasesIconAndText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${caseNo}K',
+            caseNo,
             style: Theme.of(context).textTheme.headline1!.copyWith(),
           ),
           Text(
