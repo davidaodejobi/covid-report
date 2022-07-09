@@ -48,6 +48,7 @@ class StatisticsCard extends StatelessWidget {
             height: 8,
           ),
           Text(
+            //: TODO: get the correct data from the api
             'Last Updated May 1, 2020 12:00 AM UTC',
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 16,
