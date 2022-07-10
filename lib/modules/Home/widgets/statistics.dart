@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../constant/appcolor.dart';
+import '../../../shared/responsive_builder.dart';
 import '../providers/home_provider.dart';
 import 'case_icons_and_text.dart';
 
@@ -24,8 +25,8 @@ class Statistics extends StatelessWidget {
             Row(children: [
               WebsafeSvg.asset(
                 'assets/svg/earth.svg',
-                height: 40,
-                width: 40,
+                height: ResponsiveBuilder.isDesktop(context) ? 40 : 35,
+                width: ResponsiveBuilder.isDesktop(context) ? 40 : 35,
               ),
               const SizedBox(
                 width: 20,
@@ -34,7 +35,7 @@ class Statistics extends StatelessWidget {
                 'Global Statistics',
                 style: Theme.of(context).textTheme.headline3!.copyWith(
                       color: AppColor.primary,
-                      fontSize: 30,
+                      fontSize: ResponsiveBuilder.isDesktop(context) ? 30 : 25,
                       fontWeight: FontWeight.normal,
                     ),
               ),

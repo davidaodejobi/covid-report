@@ -1,3 +1,4 @@
+import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/appcolor.dart';
@@ -21,22 +22,33 @@ class HeaderDescriptionWithButton extends StatelessWidget {
             text: 'Save Yourself\n',
             style: Theme.of(context).textTheme.headline3!.copyWith(
                   color: AppColor.primary,
-                  fontSize: 30,
+                  fontSize: ResponsiveBuilder.isDesktop(context) ? 30 : 25,
                   fontWeight: FontWeight.normal,
                 ),
             children: [
               TextSpan(
                 text: 'Save the ',
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                      color: AppColor.primary,
-                      height: 1.0,
-                    ),
+                style: ResponsiveBuilder.isDesktop(context)
+                    ? Theme.of(context).textTheme.headline1!.copyWith(
+                          color: AppColor.primary,
+                          height: 1.0,
+                        )
+                    : Theme.of(context).textTheme.headline1!.copyWith(
+                          color: AppColor.primary,
+                          fontSize: 60,
+                          height: 1.0,
+                        ),
               ),
               TextSpan(
                 text: 'World',
-                style: Theme.of(context).textTheme.headline1!.copyWith(
-                      height: 1.0,
-                    ),
+                style: ResponsiveBuilder.isDesktop(context)
+                    ? Theme.of(context).textTheme.headline1!.copyWith(
+                          height: 1.0,
+                        )
+                    : Theme.of(context).textTheme.headline1!.copyWith(
+                          fontSize: 60,
+                          height: 1.0,
+                        ),
               ),
             ],
           ),

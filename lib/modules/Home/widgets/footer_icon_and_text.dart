@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
+import '../../../shared/responsive_builder.dart';
+
 class FooterIconAndText extends StatelessWidget {
   const FooterIconAndText({
     required this.icon,
@@ -21,8 +23,8 @@ class FooterIconAndText extends StatelessWidget {
       children: [
         WebsafeSvg.asset(
           'assets/svg/$icon.svg',
-          height: 70,
-          width: 70,
+          height: ResponsiveBuilder.isDesktop(context) ? 70 : 50,
+          width: ResponsiveBuilder.isDesktop(context) ? 70 : 50,
         ),
         const SizedBox(
           height: 20,

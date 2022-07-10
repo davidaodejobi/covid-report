@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../shared/responsive_builder.dart';
+
 class DesktopVaccineInfoCard extends StatelessWidget {
   const DesktopVaccineInfoCard({
     Key? key,
@@ -25,7 +27,9 @@ class DesktopVaccineInfoCard extends StatelessWidget {
         children: [
           SizedBox(
             // height: MediaQuery.of(context).size.height * 0.3,
-            width: MediaQuery.of(context).size.width * 0.4,
+            width: ResponsiveBuilder.isDesktop(context)
+                ? MediaQuery.of(context).size.width * 0.4
+                : MediaQuery.of(context).size.width * 0.55,
             child: RichText(
               text: TextSpan(
                 text: 'Vaccine\nInformation\n',
@@ -48,8 +52,8 @@ class DesktopVaccineInfoCard extends StatelessWidget {
           ),
           Image.asset(
             'assets/images/bottle-image.png',
-            height: 160,
-            width: 160,
+            height: ResponsiveBuilder.isDesktop(context) ? 160 : 130,
+            width: ResponsiveBuilder.isDesktop(context) ? 160 : 130,
           ),
         ],
       ),

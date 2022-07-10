@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant/appcolor.dart';
+import '../../../shared/responsive_builder.dart';
 
 class StatisticsCard extends StatelessWidget {
   const StatisticsCard({
@@ -13,10 +14,10 @@ class StatisticsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final hp = Provider.of<HomeProvider>(context);
     return Container(
-      height: 470,
+      height: ResponsiveBuilder.isDesktop(context) ? 470 : 410,
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 250,
+      margin: EdgeInsets.symmetric(
+        horizontal: ResponsiveBuilder.isDesktop(context) ? 250 : 60,
         vertical: 20,
       ),
       padding: const EdgeInsets.all(40),
@@ -40,7 +41,7 @@ class StatisticsCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.headline1!.copyWith(
                     color: AppColor.primary,
-                    fontSize: 60,
+                    fontSize: ResponsiveBuilder.isDesktop(context) ? 60 : 50,
                   ),
             ),
           ),
@@ -119,7 +120,7 @@ class CardCasesCount extends StatelessWidget {
           noOfOccurrences,
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 color: AppColor.tertiaryDark,
-                fontSize: 50,
+                fontSize: ResponsiveBuilder.isDesktop(context) ? 50 : 40,
                 fontWeight: FontWeight.bold,
               ),
         ),
@@ -129,7 +130,7 @@ class CardCasesCount extends StatelessWidget {
         Text(
           type,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                fontSize: 20,
+                fontSize: ResponsiveBuilder.isDesktop(context) ? 20 : 16,
                 color: AppColor.primary,
               ),
         ),

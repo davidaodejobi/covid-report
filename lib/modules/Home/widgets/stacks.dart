@@ -1,3 +1,4 @@
+import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,15 +21,17 @@ class Stacks extends StatelessWidget {
               height: 150,
             ),
             HeaderDescriptionWithButton(),
-            const SizedBox(
-              height: 80,
+            SizedBox(
+              height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
             ),
             const Statistics(),
           ]),
         ),
         Positioned(
           top: 40,
-          right: MediaQuery.of(context).size.width * 0.4,
+          right: ResponsiveBuilder.isDesktop(context)
+              ? MediaQuery.of(context).size.width * 0.4
+              : MediaQuery.of(context).size.width * 0.36,
           child: Image.asset(
             'assets/images/nose-mask-lady.png',
             height: 140,
@@ -40,26 +43,27 @@ class Stacks extends StatelessWidget {
           right: -100,
           child: SvgPicture.asset(
             'assets/svg/coronavirus-grey.svg',
-            height: 240,
-            width: 240,
+            height: ResponsiveBuilder.isDesktop(context) ? 240 : 180,
+            width: ResponsiveBuilder.isDesktop(context) ? 240 : 180,
           ),
         ),
         Positioned(
-          top: 50,
+          top: ResponsiveBuilder.isDesktop(context) ? 50 : 20,
           left: 40,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SvgPicture.asset(
                 'assets/svg/coronavirus-red.svg',
-                height: 80,
-                width: 80,
+                height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
+                width: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
               ),
               RichText(
                 text: TextSpan(
                   text: 'The\n',
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style: TextStyle(
+                    fontSize:
+                        ResponsiveBuilder.isDesktop(context) ? 18 : 18 / 2,
                     fontWeight: FontWeight.bold,
                     height: 1.0,
                     color: Colors.red,
@@ -69,38 +73,41 @@ class Stacks extends StatelessWidget {
                       text: 'CoVID',
                       style: Theme.of(context).textTheme.headline3!.copyWith(
                             color: AppColor.secondary,
-                            fontSize: 60,
+                            fontSize:
+                                ResponsiveBuilder.isDesktop(context) ? 60 : 30,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                width: 105,
+              SizedBox(
+                width: ResponsiveBuilder.isDesktop(context) ? 105 : 60,
                 height: 1,
                 child: Divider(
                   color: AppColor.primary,
-                  thickness: 8,
+                  thickness: ResponsiveBuilder.isDesktop(context) ? 8 : 4,
                 ),
               ),
               Text(
                 'Report',
                 style: Theme.of(context).textTheme.headline4!.copyWith(
                       color: AppColor.primary,
-                      letterSpacing: 10,
+                      fontSize: ResponsiveBuilder.isDesktop(context) ? 22 : 12,
+                      letterSpacing:
+                          ResponsiveBuilder.isDesktop(context) ? 10 : 5,
                     ),
               ),
             ],
           ),
         ),
         Positioned(
-          bottom: 50,
+          bottom: 70,
           left: -70,
           child: SvgPicture.asset(
             'assets/svg/coronavirus-grey.svg',
-            height: 260,
-            width: 260,
+            height: ResponsiveBuilder.isDesktop(context) ? 260 : 180,
+            width: ResponsiveBuilder.isDesktop(context) ? 260 : 180,
           ),
         ),
       ],

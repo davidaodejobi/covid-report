@@ -28,20 +28,20 @@ class Home extends StatelessWidget {
               children: [
                 Container(
                   color: Colors.white70,
-                  height: 1750,
+                  height: ResponsiveBuilder.isDesktop(context) ? 1750 : 1680,
                   width: double.infinity,
                   child: Column(
-                    children: const [
-                      Stacks(),
+                    children: [
+                      const Stacks(),
                       SizedBox(
-                        height: 80,
+                        height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
                       ),
-                      StatisticCardHeader(),
-                      StatisticsCard(),
+                      const StatisticCardHeader(),
+                      const StatisticsCard(),
                       SizedBox(
-                        height: 80,
+                        height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
                       ),
-                      Description()
+                      const Description()
                     ],
                   ),
                 ),
