@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/Home/providers/home_provider.dart';
+import 'modules/Home/widgets/mobile/provider/tab_provider.dart';
 import 'modules/home.dart';
 
 HomeProvider hp = getIt<HomeProvider>();
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<HomeProvider>(
-            create: (_) => getIt<HomeProvider>()),
+        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+        ChangeNotifierProvider<TabProvider>(create: (_) => TabProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

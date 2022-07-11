@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../shared/responsive_builder.dart';
+import '../../../../shared/responsive_builder.dart';
 
 class CasesIconAndText extends StatelessWidget {
   const CasesIconAndText({
@@ -43,16 +43,18 @@ class CasesIconAndText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              caseNo,
-              style: ResponsiveBuilder.isDesktop(context)
-                  ? Theme.of(context).textTheme.headline1!.copyWith(
-                        height: 1.0,
-                      )
-                  : Theme.of(context).textTheme.headline1!.copyWith(
-                        fontSize: 60,
-                        height: 1.0,
-                      ),
+            ResponsiveBuilder(
+              desktop: Text(
+                caseNo,
+                style: ResponsiveBuilder.isDesktop(context)
+                    ? Theme.of(context).textTheme.headline1!.copyWith(
+                          height: 1.0,
+                        )
+                    : Theme.of(context).textTheme.headline1!.copyWith(
+                          fontSize: 60,
+                          height: 1.0,
+                        ),
+              ),
             ),
             Text(
               subText,

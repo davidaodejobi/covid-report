@@ -2,8 +2,9 @@ import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constant/appcolor.dart';
-import '../../../shared/responsive_builder.dart';
+import '../../../../constant/appcolor.dart';
+import '../../../../shared/responsive_builder.dart';
+import 'card_cases_count.dart';
 
 class StatisticsCard extends StatelessWidget {
   const StatisticsCard({
@@ -95,46 +96,6 @@ class StatisticsCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CardCasesCount extends StatelessWidget {
-  const CardCasesCount({
-    required this.noOfOccurrences,
-    required this.type,
-    required this.crossAxisAlignment,
-    Key? key,
-  }) : super(key: key);
-
-  final String noOfOccurrences;
-  final String type;
-  final CrossAxisAlignment crossAxisAlignment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: crossAxisAlignment,
-      children: [
-        Text(
-          noOfOccurrences,
-          style: Theme.of(context).textTheme.headline1!.copyWith(
-                color: AppColor.tertiaryDark,
-                fontSize: ResponsiveBuilder.isDesktop(context) ? 50 : 40,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        const SizedBox(
-          height: 4,
-        ),
-        Text(
-          type,
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                fontSize: ResponsiveBuilder.isDesktop(context) ? 20 : 16,
-                color: AppColor.primary,
-              ),
-        ),
-      ],
     );
   }
 }

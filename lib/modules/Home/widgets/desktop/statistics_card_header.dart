@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../constant/appcolor.dart';
+import '../../../../constant/appcolor.dart';
 
 class StatisticCardHeader extends StatelessWidget {
   const StatisticCardHeader({

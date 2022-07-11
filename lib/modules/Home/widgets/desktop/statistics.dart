@@ -2,9 +2,9 @@ import 'package:covid_report/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../constant/appcolor.dart';
-import '../../../shared/responsive_builder.dart';
-import '../providers/home_provider.dart';
+import '../../../../constant/appcolor.dart';
+import '../../../../shared/responsive_builder.dart';
+import '../../providers/home_provider.dart';
 import 'case_icons_and_text.dart';
 
 HomeProvider hp = getIt.get<HomeProvider>();

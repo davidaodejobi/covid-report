@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constant/appcolor.dart';
+import '../../../../constant/appcolor.dart';
 import 'footer_icon_and_text.dart';
 
 class Footer extends StatelessWidget {

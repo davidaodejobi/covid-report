@@ -2,7 +2,7 @@ import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../constant/appcolor.dart';
+import '../../../../constant/appcolor.dart';
 import 'header_desc_with_button.dart';
 import 'statistics.dart';
 
@@ -20,7 +20,7 @@ class Stacks extends StatelessWidget {
             const SizedBox(
               height: 150,
             ),
-            HeaderDescriptionWithButton(),
+            const HeaderDescriptionWithButton(),
             SizedBox(
               height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
             ),

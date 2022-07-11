@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
-import '../../../shared/responsive_builder.dart';
+import '../../../../shared/responsive_builder.dart';
 
 class FooterIconAndText extends StatelessWidget {
   const FooterIconAndText({

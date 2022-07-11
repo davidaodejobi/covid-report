@@ -1,16 +1,16 @@
 import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constant/appcolor.dart';
-import '../../../locator.dart';
-import '../providers/home_provider.dart';
+import '../../../../constant/appcolor.dart';
+import '../../../../locator.dart';
+import '../../providers/home_provider.dart';
+
+HomeProvider homeProvider = getIt<HomeProvider>();
 
 class HeaderDescriptionWithButton extends StatelessWidget {
-  HeaderDescriptionWithButton({
+  const HeaderDescriptionWithButton({
     Key? key,
   }) : super(key: key);
-
-  HomeProvider homeProvider = getIt<HomeProvider>();
 
   @override
   Widget build(BuildContext context) {
