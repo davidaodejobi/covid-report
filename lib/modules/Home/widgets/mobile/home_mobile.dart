@@ -21,6 +21,9 @@ class HomeMobile extends StatelessWidget {
     return Expanded(
       child: ListView(
         children: [
+          const SizedBox(
+            height: 20,
+          ),
           Stack(
             children: [
               SizedBox(
@@ -39,30 +42,33 @@ class HomeMobile extends StatelessWidget {
                     height: 20,
                   ),
                   const DescriptionWithButton(),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               )),
               Positioned(
                 top: 2,
-                right: -MediaQuery.of(context).size.height * 0.125,
+                right: -MediaQuery.of(context).size.height * 0.12,
                 child: SvgPicture.asset(
                   'assets/svg/coronavirus-grey.svg',
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  width: MediaQuery.of(context).size.height * 0.25,
+                  height: MediaQuery.of(context).size.width * 0.3,
+                  width: MediaQuery.of(context).size.width * 0.3,
                 ),
               ),
               Positioned(
-                bottom: 100,
-                left: -MediaQuery.of(context).size.height * 0.15,
+                bottom: 160,
+                left: -MediaQuery.of(context).size.height * 0.12,
                 child: SvgPicture.asset(
                   'assets/svg/coronavirus-grey.svg',
-                  height: MediaQuery.of(context).size.height * 0.30,
-                  width: MediaQuery.of(context).size.height * 0.30,
+                  height: MediaQuery.of(context).size.width * 0.35,
+                  width: MediaQuery.of(context).size.width * 0.35,
                 ),
               ),
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           Row(
             children: [

@@ -14,7 +14,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
   setUp();
-  hp.getAllCountriesCovidReport();
 }
 
 const Color colorSeed = AppColor.primary;
@@ -27,7 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
+        ChangeNotifierProvider<HomeProvider>(
+            create: (_) => getIt<HomeProvider>()),
         ChangeNotifierProvider<TabProvider>(create: (_) => TabProvider()),
       ],
       child: MaterialApp(

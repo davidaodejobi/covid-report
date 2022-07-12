@@ -4,7 +4,7 @@ import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../../constant/appcolor.dart';
 import '../../providers/home_provider.dart';
-import '../desktop/card_cases_count.dart';
+import 'card_case_count_mobile.dart';
 
 class StatisticsMobile extends StatelessWidget {
   const StatisticsMobile({
@@ -13,7 +13,6 @@ class StatisticsMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hp = Provider.of<HomeProvider>(context, listen: true);
     return Expanded(
       child: ListView(
         children: [
@@ -94,25 +93,29 @@ class StatisticsMobile extends StatelessWidget {
                           color: AppColor.tertiary,
                         ),
                       ),
-                      Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            items: hp.listOfCountries
-                                .map((country) => DropdownMenuItem(
-                                    value: country, child: Text(country!)))
-                                .toList(),
-                            onChanged: (String? value) {
-                              hp.onCountrySelect(value!);
-                            },
-                            value: hp.selectedCountry,
-                            style:
-                                Theme.of(context).textTheme.headline4!.copyWith(
-                                      color: AppColor.secondary,
-                                    ),
-                            isExpanded: true,
+                      Consumer<HomeProvider>(builder: (context, hp, _) {
+                        return Expanded(
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              items: hp.listOfCountries
+                                  .map((country) => DropdownMenuItem(
+                                      value: country, child: Text(country!)))
+                                  .toList(),
+                              onChanged: (String? value) {
+                                hp.onCountrySelect(value!);
+                              },
+                              value: hp.selectedCountry,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline4!
+                                  .copyWith(
+                                    color: AppColor.secondary,
+                                  ),
+                              isExpanded: true,
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -138,67 +141,71 @@ class StatisticsMobile extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(
-                  child: Text(
-                    hp.selectedCountry,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.headline1!.copyWith(
-                          color: AppColor.primary,
-                          fontSize: 40,
-                        ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  //: TODO: get the correct data from the api
-                  'Last Updated May 1, 2020 12:00 AM UTC',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontSize: 16,
+            child: Consumer<HomeProvider>(
+              builder: (context, hp, _) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        hp.selectedCountry,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headline1!.copyWith(
+                              color: AppColor.primary,
+                              fontSize: 40,
+                            ),
                       ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CardCasesCount(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  noOfOccurrences:
-                      hp.addComma(hp.selectedCountryData.totalConfirmed!),
-                  type: 'Confirmed Cases',
-                ),
-                Row(
-                  children: [
-                    const Spacer(),
-                    CardCasesCount(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      //: TODO: get the correct data from the api
+                      'Last Updated May 1, 2020 12:00 AM UTC',
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: 16,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CardCasesCountMobile(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       noOfOccurrences:
-                          hp.addComma(hp.selectedCountryData.newDeaths!),
-                      type: 'New Confirmed Cases',
+                          hp.addComma(hp.selectedCountryData.totalConfirmed!),
+                      type: 'Confirmed Cases',
+                    ),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        CardCasesCountMobile(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          noOfOccurrences:
+                              hp.addComma(hp.selectedCountryData.newDeaths!),
+                          type: 'New Confirmed Cases',
+                        ),
+                      ],
+                    ),
+                    CardCasesCountMobile(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      noOfOccurrences:
+                          hp.addComma(hp.selectedCountryData.totalDeaths!),
+                      type: 'Deaths',
+                    ),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        CardCasesCountMobile(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          noOfOccurrences:
+                              hp.addComma(hp.selectedCountryData.newDeaths!),
+                          type: 'New Deaths',
+                        ),
+                      ],
                     ),
                   ],
-                ),
-                CardCasesCount(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  noOfOccurrences:
-                      hp.addComma(hp.selectedCountryData.totalDeaths!),
-                  type: 'Deaths',
-                ),
-                Row(
-                  children: [
-                    const Spacer(),
-                    CardCasesCount(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      noOfOccurrences:
-                          hp.addComma(hp.selectedCountryData.newDeaths!),
-                      type: 'New Deaths',
-                    ),
-                  ],
-                ),
-              ],
+                );
+              },
             ),
           ),
         ],

@@ -67,9 +67,7 @@ class HeaderDescriptionWithButton extends StatelessWidget {
           height: 50,
           width: 200,
           child: ElevatedButton(
-            onPressed: () {
-              homeProvider.getAllCountriesCovidReport();
-            },
+            onPressed: () {},
             child: const Text('Check Symptoms'),
           ),
         ),

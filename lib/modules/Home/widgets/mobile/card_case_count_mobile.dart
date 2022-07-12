@@ -1,10 +1,9 @@
-import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constant/appcolor.dart';
 
-class CardCasesCount extends StatelessWidget {
-  const CardCasesCount({
+class CardCasesCountMobile extends StatelessWidget {
+  const CardCasesCountMobile({
     required this.noOfOccurrences,
     required this.type,
     required this.crossAxisAlignment,
@@ -24,7 +23,7 @@ class CardCasesCount extends StatelessWidget {
           noOfOccurrences,
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 color: AppColor.tertiaryDark,
-                fontSize: ResponsiveBuilder.isDesktop(context) ? 50 : 40,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
         ),
@@ -34,7 +33,7 @@ class CardCasesCount extends StatelessWidget {
         Text(
           type,
           style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                fontSize: ResponsiveBuilder.isDesktop(context) ? 18 : 14,
+                fontSize: 14,
                 color: AppColor.primary,
               ),
         ),
