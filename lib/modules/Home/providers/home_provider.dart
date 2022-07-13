@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:animations/animations.dart';
 import 'package:covid_report/core/models/countries.dart';
 import 'package:covid_report/core/models/summary.dart';
 import 'package:covid_report/core/services/base_api.dart';
@@ -60,6 +61,49 @@ class HomeProvider with ChangeNotifier {
   String addComma(int count) {
     return count.toString().replaceAllMapped(
         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
+  }
+
+  modal(BuildContext ctx) {
+    String bullet = "\u2022 ";
+
+    List symptoms = [
+      ' Fever or chills',
+      'Cough',
+      'Shortness of breath or difficulty breathing',
+      'Fatigue',
+      'Muscle or body aches',
+      'Headache',
+    ];
+    showModal(
+      context: ctx,
+      configuration: const FadeScaleTransitionConfiguration(),
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              "Watch for Symptoms",
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Phasellus ullamcorper ipsum rutrum nunc. Morbi vestibulum volutpat enim. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Phasellus blandit leo ut odio. Donec vitae orci sed dolor rutrum auctor. Aliquam lobortis. Cras dapibus. Quisque rutrum.",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              ...symptoms
+                  .map((e) => Text(
+                        "$bullet $e",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ))
+                  .toList(),
+            ],
+          ),
+        );
+      },
+    );
   }
   // loadCountry() async {
   //   String data = await rootBundle.loadString('assets/json/countries.json');

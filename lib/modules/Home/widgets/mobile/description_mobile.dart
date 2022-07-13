@@ -1,4 +1,6 @@
+import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 import '../../../../constant/appcolor.dart';
@@ -11,6 +13,7 @@ class DescriptionMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hp = Provider.of<HomeProvider>(context);
     return Expanded(
       child: ListView(
         children: [
@@ -51,7 +54,9 @@ class DescriptionMobile extends StatelessWidget {
                   height: 50,
                   width: 200,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      hp.modal(context);
+                    },
                     child: const Text('Check Symptoms'),
                   ),
                 ),

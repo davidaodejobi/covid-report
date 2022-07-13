@@ -8,8 +8,6 @@ import 'modules/Home/providers/home_provider.dart';
 import 'modules/Home/widgets/mobile/provider/tab_provider.dart';
 import 'modules/home.dart';
 
-HomeProvider hp = getIt<HomeProvider>();
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());

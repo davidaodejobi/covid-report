@@ -1,5 +1,7 @@
+import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:covid_report/shared/responsive_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
 class Description extends StatelessWidget {
@@ -9,6 +11,7 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hp = Provider.of<HomeProvider>(context);
     return ResponsiveBuilder(
       desktop: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +52,9 @@ class Description extends StatelessWidget {
                       height: 50,
                       width: 200,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          hp.modal(context);
+                        },
                         child: const Text('Check Symptoms'),
                       ),
                     ),
@@ -98,7 +103,9 @@ class Description extends StatelessWidget {
                       height: 50,
                       width: 200,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          hp.modal(context);
+                        },
                         child: const Text('Check Symptoms'),
                       ),
                     ),

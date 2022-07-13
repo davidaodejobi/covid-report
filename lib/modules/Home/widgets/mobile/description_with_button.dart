@@ -1,4 +1,6 @@
+import 'package:covid_report/modules/Home/providers/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constant/appcolor.dart';
 
@@ -9,6 +11,7 @@ class DescriptionWithButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hp = Provider.of<HomeProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -63,7 +66,9 @@ class DescriptionWithButton extends StatelessWidget {
           height: 45,
           width: 200,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              hp.modal(context);
+            },
             child: const Text('Check Symptoms'),
           ),
         ),
