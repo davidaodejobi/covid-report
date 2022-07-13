@@ -6,10 +6,42 @@ import '../../../../constant/appcolor.dart';
 import 'header_desc_with_button.dart';
 import 'statistics.dart';
 
-class Stacks extends StatelessWidget {
+class Stacks extends StatefulWidget {
   const Stacks({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<Stacks> createState() => _StacksState();
+}
+
+class _StacksState extends State<Stacks> with TickerProviderStateMixin {
+  late AnimationController _covidController;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _covidController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 8))
+          ..repeat();
+
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 2000), vsync: this, value: 0.1);
+
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.slowMiddle);
+    _controller.repeat(
+      reverse: true,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _covidController;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +64,14 @@ class Stacks extends StatelessWidget {
           right: ResponsiveBuilder.isDesktop(context)
               ? MediaQuery.of(context).size.width * 0.4
               : MediaQuery.of(context).size.width * 0.36,
-          child: Image.asset(
-            'assets/images/nose-mask-lady.png',
-            height: 140,
-            width: 140,
+          child: ScaleTransition(
+            scale: _animation,
+            alignment: Alignment.center,
+            child: Image.asset(
+              'assets/images/nose-mask-lady.png',
+              height: 140,
+              width: 140,
+            ),
           ),
         ),
         Positioned(
@@ -53,10 +89,15 @@ class Stacks extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                'assets/svg/coronavirus-red.svg',
-                height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
-                width: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
+              RotationTransition(
+                turns: Tween<double>(begin: 0.0, end: 1.0).animate(
+                    CurvedAnimation(
+                        parent: _covidController, curve: Curves.linear)),
+                child: SvgPicture.asset(
+                  'assets/svg/coronavirus-red.svg',
+                  height: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
+                  width: ResponsiveBuilder.isDesktop(context) ? 80 : 50,
+                ),
               ),
               RichText(
                 text: TextSpan(

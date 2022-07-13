@@ -3,10 +3,32 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../constant/appcolor.dart';
 
-class LogoHeader extends StatelessWidget {
+class LogoHeader extends StatefulWidget {
   const LogoHeader({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<LogoHeader> createState() => _LogoHeaderState();
+}
+
+class _LogoHeaderState extends State<LogoHeader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _covidController;
+
+  @override
+  void initState() {
+    super.initState();
+    _covidController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 8))
+          ..repeat();
+  }
+
+  @override
+  void dispose() {
+    _covidController;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +39,14 @@ class LogoHeader extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        SvgPicture.asset(
-          'assets/svg/coronavirus-red.svg',
-          height: 80,
-          width: 80,
+        RotationTransition(
+          turns: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(parent: _covidController, curve: Curves.linear)),
+          child: SvgPicture.asset(
+            'assets/svg/coronavirus-red.svg',
+            height: 80,
+            width: 80,
+          ),
         ),
         const SizedBox(
           width: 5,
