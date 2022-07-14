@@ -25,12 +25,6 @@ class _LogoHeaderState extends State<LogoHeader>
   }
 
   @override
-  void dispose() {
-    _covidController;
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

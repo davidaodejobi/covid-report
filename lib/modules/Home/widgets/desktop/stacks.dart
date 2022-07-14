@@ -39,7 +39,6 @@ class _StacksState extends State<Stacks> with TickerProviderStateMixin {
   @override
   void dispose() {
     _controller.dispose();
-    _covidController;
     super.dispose();
   }
 
